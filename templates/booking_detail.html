@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détails de la réservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-6">
+
+  <div class="max-w-3xl mx-auto">
+
+    <!-- HEADER -->
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">
+      📝 Détails de la réservation
+    </h1>
+
+    <!-- RESERVATION CARD -->
+    <div class="bg-white shadow-md rounded-xl p-6 mb-8 border">
+
+      <div class="mb-4">
+        <h2 class="text-xl font-semibold text-gray-700">Informations générales</h2>
+      </div>
+
+      <div class="space-y-2 text-gray-600">
+        <p>
+          <span class="font-medium text-gray-800">Réservation :</span>
+          #{{ reservation.created_at|date:"Ymd" }}
+        </p>
+
+        <p>
+          <span class="font-medium text-gray-800">Client :</span>
+          {{ reservation.client.email }}
+        </p>
+
+        <p>
+          <span class="font-medium text-gray-800">Véhicule :</span>
+          {{ reservation.vehicle.marque_data.name }} — {{ reservation.vehicle.modele_data.name }}
+        </p>
+
+        <p>
+          <span class="font-medium text-gray-800">Du :</span>
+          {{ reservation.start_datetime }}
+        </p>
+
+        <p>
+          <span class="font-medium text-gray-800">Au :</span>
+          {{ reservation.end_datetime }}
+        </p>
+
+        <p class="text-lg font-bold text-gray-900 mt-3">
+          Total : {{ reservation.total_amount }} Ar
+        </p>
+      </div>
+    </div>
+
+    <!-- PAYMENT SECTION -->
+    <div class="bg-white shadow-md rounded-xl p-6 border">
+
+      <div class="mb-4">
+        <h2 class="text-xl font-semibold text-gray-700 flex items-center gap-2">
+          💵 Paiement
+        </h2>
+      </div>
+
+      {% if payment %}
+        
+        <!-- STATUS BADGE -->
+        <p class="mb-3">
+          <span class="font-medium text-gray-800">Statut :</span>
+
+          {% if payment.status == "PENDING" %}
+            <span class="ml-2 px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold">En attente</span>
+          {% elif payment.status == "VALIDATED" %}
+            <span class="ml-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Validé</span>
+          {% elif payment.status == "REJECTED" %}
+            <span class="ml-2 px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">Rejeté</span>
+          {% elif payment.status == "REFUNDED" %}
+            <span class="ml-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Remboursé</span>
+          {% endif %}
+        </p>
+
+        <!-- REFERENCE -->
+        <p class="mb-3">
+          <span class="font-medium text-gray-800">Référence :</span>
+          {{ payment.reason }}
+        </p>
+
+        <!-- PROOF IMAGE -->
+        {% if payment.proof_image %}
+          <div class="mt-4">
+            <p class="font-medium text-gray-800 mb-1">Preuve du paiement :</p>
+            <a href="{{ payment.proof_image.url }}" target="_blank" 
+              class="inline-block bg-gray-800 text-white px-4 py-2 rounded-md shadow hover:bg-black transition">
+              Voir la preuve
+            </a>
+          </div>
+        {% endif %}
+
+      {% else %}
+
+        <div class="p-4 bg-gray-50 border rounded-lg text-gray-600">
+          Aucun paiement enregistré pour cette réservation.
+        </div>
+
+      {% endif %}
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+media/*
+
+.env
+.env.*
+.env.local
+.venv
+.venv/*
+venv
+venv/*
+env/
+env/*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Django
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific junk/sensitive
+Capture8.PNG
+final_cookies.txt
+25.3
+
+envlocal.txt
+.env
+.env.local
+.env.*

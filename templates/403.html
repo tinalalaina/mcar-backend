@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès refusé</title>
+
+    <!-- Tailwind CSS CDN (pour prototypage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center px-4">
+
+    <div class="max-w-md w-full text-center">
+        <div class="bg-white shadow-xl rounded-2xl p-8">
+            
+            <div class="mb-4">
+                <div class="mx-auto w-20 h-20 bg-red-100 text-red-600 flex items-center justify-center rounded-full">
+                    <!-- Danger icon -->
+                    <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M12 9v4m0 4h.01M10.29 3.86 2.82 18.14A2 2 0 0 0 4.53 21h14.94a2 2 0 0 0 1.71-2.86L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+                    </svg>
+                </div>
+            </div>
+
+            <h1 class="text-2xl font-bold text-slate-800 mb-2">
+                Accès refusé
+            </h1>
+
+            <p class="text-slate-600 mb-6">
+                Vous ne disposez pas des autorisations nécessaires pour accéder à cette page.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="/" class="w-full py-3 rounded-lg bg-slate-800 text-white font-medium hover:bg-slate-900">
+                    Retour à l'accueil
+                </a>
+
+                <a href="javascript:history.back()" class="w-full py-3 rounded-lg bg-slate-200 text-slate-800 font-medium hover:bg-slate-300">
+                    Page précédente
+                </a>
+            </div>
+        </div>
+
+        <p class="mt-6 text-xs text-slate-500">Erreur 403 — Forbidden</p>
+    </div>
+
+</body>
+</html>

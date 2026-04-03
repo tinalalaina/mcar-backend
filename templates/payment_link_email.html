@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lien de paiement</title>
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      max-width: 560px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #111827;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .text {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .btn {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background: #1c7ed6;
+      color: white !important;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: center;
+    }
+    code {
+      background: #eef2ff;
+      padding: 3px 6px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="title">Confirmation de paiement – MadaGasyCar</h2>
+
+    <p class="text">
+      Bonjour <strong>{{ client_name }}</strong>,
+    </p>
+
+    <p class="text">
+      Nous avons bien reçu votre demande de paiement concernant votre réservation.
+      Pour confirmer votre paiement, cliquez sur le bouton ci-dessous :
+    </p>
+
+    <a href="{{ payment_url }}" class="btn">Confirmer mon paiement</a>
+
+    <p class="text">
+      Si le bouton ne fonctionne pas, copiez et collez ce lien dans votre navigateur : <br>
+      <br>
+      <code>{{ payment_url }}</code>
+    </p>
+
+    <p class="text">
+      <strong>Mode de paiement suggéré :</strong><br>
+      {{ payment_mode_name }} — <strong>{{ payment_mode_number }}</strong>
+    </p>
+
+    <p class="text">
+      <strong>Référence à mettre dans le transfert :</strong><br>
+      <code>{{ payment_reference }}</code>
+    </p>
+
+    <p class="footer">
+      Merci d’avoir choisi MadaGasyCar.<br>
+      Ce lien expirera automatiquement pour votre sécurité.
+    </p>
+  </div>
+
+</body>
+</html>
